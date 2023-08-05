@@ -1,8 +1,10 @@
 // Selecting the sidebar and buttons
 const sidebar = document.querySelector(".sidebar");
-const sidebarOpenBtn = document.querySelector("#sidebar-open");
 const sidebarCloseBtn = document.querySelector("#sidebar-close");
 const sidebarLockBtn = document.querySelector("#lock-icon");
+const article = document.getElementById("article");
+const allCompany = document.getElementById("allCompany");
+const database = document.getElementById("database");
 
 // Function to toggle the lock state of the sidebar
 const toggleLock = () => {
@@ -55,16 +57,23 @@ console.log(menuItem)
 const li = menuItem.querySelectorAll("li");
 const li1 = li[0];
 const li2 = li[1];
+const li3 = li[2];
 
 li1.addEventListener("click", () => {
-    const article = document.getElementById("article");
     allCompany.style.display = "none";
     article.style.display = "flex";
+    database.style.display = "none";
 })
 
 li2.addEventListener("click", () => {
-    const allCompany = document.getElementById("allCompany");
     article.style.display = "none";
     allCompany.style.display = "flex";
+    database.style.display = "none";
+})
+
+li3.addEventListener("click", () => {
+    article.style.display = "none";
+    allCompany.style.display = "none";
+    database.style.display = "flex";
 })
 

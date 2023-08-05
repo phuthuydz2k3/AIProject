@@ -214,4 +214,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     buttonCompany.addEventListener("click", handleCompany);
+
+    const buttonDatabase = document.getElementById("b");
+    buttonDatabase.addEventListener("click", async () => {
+        const positiveLinks = document.getElementById("positiveLinks").value.split(/\s+/).join('\n');
+        const neutralLinks = document.getElementById("neutralLinks").value.split(/\s+/).join('\n');
+        const negativeLinks = document.getElementById("negativeLinks").value.split(/\s+/).join('\n');
+        const formData = new URLSearchParams();
+        formData.append('positiveLinks', positiveLinks);
+        formData.append('neutralLinks', neutralLinks);
+        formData.append('negativeLinks', negativeLinks);
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/database', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData,
+            });
+
+            const r = await response.text();
+            console.log(r); // This will log the response text from the server
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
 });
